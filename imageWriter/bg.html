@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta property="og:title" content=" ">
+    <meta property="og:description" content="  C ">
+    <meta property="og:image" content=" ">
+    <meta property="og:url" content=" ">
+</head>
+
+<body onload="run()">
+    <script>
+        var intervalId = window.setInterval(function () {
+            $('<img/>').attr('src', '/bingme.ashx?c=1')
+                .on('load', function () {
+                    $(this).remove(); // prevent memory leaks as @benweet suggested
+                    $('body').css('background-image', 'url(/bingme.ashx?c=1)');
+                    console.log("loaded");
+                });
+        }, 4000);
+    </script>
+    <script>
+        function currentTime() {
+            let date = new Date();
+            let hh = date.getHours();
+            let mm = date.getMinutes();
+            let ss = date.getSeconds();
+            let session = "AM";
+
+            if (hh == 0) {
+                hh = 12;
+            }
+            if (hh > 12) {
+                hh = hh - 12;
+                session = "PM";
+            }
+
+            hh = (hh < 10) ? "0" + hh : hh;
+            mm = (mm < 10) ? "0" + mm : mm;
+            ss = (ss < 10) ? "0" + ss : ss;
+
+            let time = hh + ":"+ mm +"<span class='secondstime'>:"+ ss +" "+ session +" </span>"
+
+            document.getElementById("clocky").innerHTML = time;
+            let t = setTimeout(function () { currentTime() }, 1000);
+
+        }
+        currentTime();
+
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap');
+
+        body {
+            background-image:url("th.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .secondstime {
+            margin:30px;
+        }
+
+        #p {
+            margin-top: 200px;
+        }
+
+        .prayer {
+            padding: 10px;
+            border: 1px solid;
+            text-align: center;
+            border-radius: 5px;
+            background: #eeeeee75;
+            font-weight: bold;
+            color: aliceblue;
+            font-size: 25px;
+        }
+
+        .prayer.active {
+            background: #337ab77a;
+        }
+
+        .prayer span {
+            display: block;
+
+        }
+
+        .clock {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 120px;
+            text-align: center;
+            text-shadow: 2px 2px #fd8f8d;
+        }
+        .secondstime {
+    font-size: xx-large;
+}
+#gdate ,#hijdate{
+    font-family: 'Cormorant Garamond', serif;
+            font-size: 120px;
+            text-align: center;
+            text-shadow: 2px 2px #c3d350;
+            font-size: x-large;
+    
+}
+        .tim,
+        .tit {
+            font-family: 'Cormorant Garamond', serif;
+            color: black;
+        }
+
+        .next {
+            background-color: #6495edba;
+        }
+
+        .next .tit,
+        .next .tim {
+            color: blue;
+        }
+
+        .rem {
+            font-size: smaller;
+            font-weight: normal;
+            font-family: 'Cormorant Garamond';
+            text-align: left;
+        }
+    </style>
+
+    <div class='container'>
+        <div class="row">
+            <div class='col-md-3 date' ><span id='gdate'></span></div>
+            <div class='col-md-6 clock'  onload="currentTime()"><span class='clocktime' id='clocky'></span></div>
+            <div class='col-md-3 date'><span id='hijdate'></span></div>
+
+
+        </div>
+        <div class="row">
+            <div id="p"></div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+
+function getPrayers(jsonFUll, arrindex) {
+            var arr = jsonFUll.data;
+            var json = arr[arrindex];
+
+
+            return json.timings;
+        }
+
+        function getDates(jsonFUll, arrindex) {
+            var arr = jsonFUll.data;
+            var json = arr[arrindex];
+
+
+            return json.date;
+        }
+
+
+        function makeTime(time) {
+            const ar = time.split("(+");
+            var time = ar[0];
+            var hr = time.split(":")[0];
+            var mi = time.split(":")[1];
+            var hr = parseInt(hr) % 12;
+
+            return hr + ":" + mi;
+
+
+
+        }
+
+        function getHour24(time) {
+            const ar = time.split("(+");
+            var time = ar[0];
+            var hr = time.split(":")[0];
+            var hr = parseInt(hr);
+
+            return hr;
+
+        }
+        function isActive(current, NextPrayer) {
+            var ths = getHour24(current);
+            var next = getHour24(NextPrayer);
+
+
+
+            let date = new Date();
+            let nowhour = date.getHours();
+            if (nowhour >= ths && nowhour < next)
+                return true;
+            return false;
+
+
+        }
+
+        function getCurrentPrayer(timings) {
+            if (isActive(timings.Fajr, timings.Sunrise))
+                return timings.Fajr;
+            if (isActive(timings.Sunrise, timings.Dhuhr))
+                return timings.Sunrise;
+            if (isActive(timings.Dhuhr, timings.Asr))
+                return timings.Dhuhr;
+            if (isActive(timings.Asr, timings.Maghrib))
+                return timings.Asr;
+            if (isActive(timings.Maghrib, timings.Isha))
+                return timings.Maghrib;
+            if (isActive(timings.Isha, timings.Midnight))
+                return timings.Isha;
+        }
+        function GetNextTime(timings) {
+            if (isActive(timings.Fajr, timings.Sunrise))
+                return timings.Sunrise;
+            if (isActive(timings.Sunrise, timings.Dhuhr))
+                return timings.Dhuhr;
+            if (isActive(timings.Dhuhr, timings.Asr))
+                return timings.Asr;
+            if (isActive(timings.Asr, timings.Maghrib))
+                return timings.Maghrib;
+            if (isActive(timings.Maghrib, timings.Isha))
+                return timings.Isha;
+            if (isActive(timings.Isha, timings.Midnight))
+                return timings.Midnight;
+        }
+
+
+        function TimeToNext() {
+
+            var next = $(".next").attr("value");
+            var hourNext = getHour24(next);
+            const ar = next.split("(+");
+            var time = ar[0];
+            var hr = time.split(":")[0];
+            var mi = time.split(":")[1];
+
+
+            let date = new Date();
+            let hhn = date.getHours();
+            let mmn = date.getMinutes();
+
+
+            var date1 = new Date(2000, 0, 1, hhn, mmn); // 5:00 PM
+            var date2 = new Date(2000, 0, 1, hr, mi); // 9:00 AM
+
+            // the following is to handle cases where the times are on the opposite side of
+            // midnight e.g. when you want to get the difference between 9:00 PM and 5:00 AM
+
+            if (date2 < date1) {
+                date2.setDate(date2.getDate() + 1);
+            }
+
+            var diff = date2 - date1;
+            var msec = diff;
+            var hh = Math.floor(msec / 1000 / 60 / 60);
+            msec -= hh * 1000 * 60 * 60;
+            var mm = Math.floor(msec / 1000 / 60);
+            msec -= mm * 1000 * 60;
+            var ss = Math.floor(msec / 1000);
+            msec -= ss * 1000;
+
+            var hs="";
+            if(hh<10)
+            hs="0"+hh;
+
+                if(mm<10)
+                mm+="0"+mm;
+            $('#remain').html(hs + ":" + mm);
+            $(".rem").remove(".rem");
+            $('<span class="rem">' + hs + ":" + mm + '</span>').insertAfter(".next .tim")
+            let t = setTimeout(function () { TimeToNext() }, 1000);
+        }
+
+        function Highlight(timings) {
+            $('.prayer').each(function () {
+                // código...
+                var x = $(this).attr("value");
+
+                if (GetNextTime(timings) == $(this).attr("value")) {
+                    $(this).addClass("next");
+                }
+
+                console.log($(this).attr("value"));
+            })
+        }
+
+        function buildhtml(timings) {
+
+
+            var h = "<div class='container'><div class='row'>";
+            h += "<div class='col-md-2 prayer ' value='" + timings.Fajr + "'><span class='tit'>Fajr</span><span class='tim'>" + makeTime(timings.Fajr) + "</span></div>";
+            h += "<div class='col-md-2 prayer ' value='" + timings.Sunrise + "'><span class='tit'>Sunrise</span><span class='tim'>" + makeTime(timings.Sunrise) + "</span></div>";
+            h += "<div class='col-md-2 prayer ' value='" + timings.Dhuhr + "'><span class='tit'>Dhuhr</span><span class='tim'>" + makeTime(timings.Dhuhr) + "</span></div>";
+            h += "<div class='col-md-2 prayer ' value='" + timings.Asr + "'><span class='tit'>Asr</span><span class='tim'>" + makeTime(timings.Asr) + "</span></div>";
+            h += "<div class='col-md-2 prayer ' value='" + timings.Maghrib + "'><span class='tit'>Maghrib</span><span class='tim'>" + makeTime(timings.Maghrib) + "</span></div>";
+            h += "<div class='col-md-2 prayer ' value='" + timings.Isha + "'><span class='tit'>Isha</span><span class='tim'>" + makeTime(timings.Isha) + "</span></div>";
+            h += "</div></div>";
+
+            $("#p").html(h);
+
+
+
+        }
+
+
+        function buildDates(date)
+        {
+
+
+            var hij=  date.hijri.day+" /"+date.hijri.month.en +" /"+  date.hijri.year
+            // var h = "<div class='row'>";
+            // h += "<div class='col-md-2 prayer ' value='" + timings.Asr + "'><span class='tit'>Asr</span><span class='tim'>" + makeTime(timings.Asr) + "</span></div>";
+            // h += "<div class='col-md-2 prayer ' value='" + timings.Maghrib + "'><span class='tit'>Maghrib</span><span class='tim'>" + makeTime(timings.Maghrib) + "</span></div>";
+            // h += "<div class='col-md-2 prayer ' value='" + timings.Isha + "'><span class='tit'>Isha</span><span class='tim'>" + makeTime(timings.Isha) + "</span></div>";
+            // h += "</div></div>";
+
+            $("#hijdate").html(hij);
+            var ge=  date.gregorian.day+" /"+date.gregorian.month.en +" /"+  date.gregorian.year
+            $("#gdate").html(ge);
+        }
+
+        function run() {
+            console.log("run32?");
+            xxx();
+            currentTime();
+
+        }
+
+        function xxx() {
+            console.log("Getting Prayers..");
+            var d = new Date();
+            var strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+            var month = d.getMonth() + 1;
+            var year = d.getFullYear();
+            var day = d.getDate();
+            var indx_day = day - 1;
+            var url_ = 'http://api.aladhan.com/v1/calendar?latitude=24.67669156208792&longitude=46.81787092207725&method=4&month=' + month + '&year=' + year;
+
+            $.ajax({
+                url: url_,
+                type: 'GET',
+                data: "formData",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (file) {
+                    console.log(file);
+                    buildhtml(getPrayers(file, indx_day));
+                    buildDates(getDates(file,indx_day));
+                    Highlight(getPrayers(file, indx_day));
+
+                    TimeToNext();
+
+
+                },
+                xhr: function () {
+                    var fileXhr = $.ajaxSettings.xhr();
+                    if (fileXhr.upload) {
+                    }
+                    return fileXhr;
+                }
+            });
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

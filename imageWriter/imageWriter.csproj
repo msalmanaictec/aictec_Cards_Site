@@ -1,0 +1,351 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{53C7B3E7-4FAF-4D81-B294-8FF35B1639B7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>imageWriter</RootNamespace>
+    <AssemblyName>imageWriter</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44306</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="a22\adha.aspx" />
+    <Content Include="a22\Aictec.png" />
+    <Content Include="a22\Berry.png" />
+    <Content Include="a22\default.aspx" />
+    <Content Include="a22\Leen.png" />
+    <Content Include="a22\MFC.png" />
+    <Content Include="a22\minasa.png" />
+    <Content Include="a22\musahm.png" />
+    <Content Include="a22\Sultan.png" />
+    <Content Include="bg.html" />
+    <Content Include="cards\card.aspx" />
+    <Content Include="cards\default.aspx" />
+    <Content Include="cards\images\card-ac.png" />
+    <Content Include="cards\images\card-zk.png" />
+    <Content Include="cards\images\image026.png" />
+    <Content Include="e22\aictec.png" />
+    <Content Include="e22\Berry.png" />
+    <Content Include="e22\default.aspx" />
+    <Content Include="e22\Fitr.aspx" />
+    <Content Include="e22\fmc.png" />
+    <Content Include="e22\leen.png" />
+    <Content Include="e22\minasa.png" />
+    <Content Include="e22\musahm.png" />
+    <Content Include="EID\Default.aspx" />
+    <Content Include="EID\eid-leen.png" />
+    <Content Include="EID\minasa.png" />
+    <Content Include="EID\EidProcess.aspx" />
+    <Content Include="EID\logo.png" />
+    <Content Include="EID\eid-zk.png" />
+    <Content Include="Email\default.aspx" />
+    <Content Include="Email\Emailcheck.aspx" />
+    <Content Include="Email\EmailProcess.aspx" />
+    <Content Include="Email\list.aspx" />
+    <Content Include="Images\Almarai.ttf" />
+    <Content Include="Images\Almarai-Bold.ttf" />
+    <Content Include="Images\header.png" />
+    <Content Include="Images\thumb.png" />
+    <Content Include="index.html" />
+    <Content Include="logo\default.aspx" />
+    <Content Include="png\%40.png" />
+    <Content Include="png\f.png" />
+    <Content Include="png\i.png" />
+    <Content Include="png\l.png" />
+    <Content Include="png\m.png" />
+    <Content Include="png\pin.png" />
+    <Content Include="png\s.png" />
+    <Content Include="png\t.png" />
+    <Content Include="png\tel.png" />
+    <Content Include="png\y.png" />
+    <Content Include="png\zk.aspx" />
+    <Content Include="Ramadan2021\aictec-ramadan2021.png" />
+    <Content Include="Ramadan2021\default.aspx" />
+    <Content Include="Ramadan2021\leen-ramadan2021.png" />
+    <Content Include="Ramadan2021\ramadanProcess.aspx" />
+    <Content Include="ramadan2022\aictec.png" />
+    <Content Include="ramadan2022\Berry.png" />
+    <Content Include="ramadan2022\default.aspx" />
+    <Content Include="ramadan2022\fmc.png" />
+    <Content Include="ramadan2022\leen.png" />
+    <Content Include="ramadan2022\minasa.png" />
+    <Content Include="ramadan2022\musahm.png" />
+    <Content Include="ramadan2022\ramadanProcess.aspx" />
+    <Content Include="ramadan2022\sultan.png" />
+    <Content Include="redir.css" />
+    <Content Include="redir.js" />
+    <Content Include="th.jpg" />
+    <Content Include="thumb.aspx" />
+    <Content Include="Fonts\Cairo-Bold.ttf" />
+    <Content Include="cards\images\بزنس كارد ايكتك بعد التعديل3.pdf" />
+    <Content Include="cards\images\بزنس كارد زدكي .pdf" />
+    <Content Include="Fonts\Almarai.ttf" />
+    <Content Include="Fonts\29ltbukraregular.otf" />
+    <Content Include="BingMe.ashx" />
+    <Content Include="JerseyM54.ttf" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\EidsCards - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cards.aspx" />
+    <Content Include="Images\2.png" />
+    <Content Include="Images\1.png" />
+    <Content Include="aictec.aspx" />
+    <Content Include="Images\3.png" />
+    <Content Include="Images\Email.png" />
+    <Content Include="Images\Emails\aictec-jeddeh.png" />
+    <Content Include="Images\Emails\aictec-khobar.png" />
+    <Content Include="Images\Emails\aictec-riyadh.png" />
+    <Content Include="Images\Emails\zkteco-jeddeh.png" />
+    <Content Include="Images\Emails\zkteco-khobar.png" />
+    <Content Include="Images\Emails\zkteco-riyadh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="a22\adha.aspx.cs">
+      <DependentUpon>adha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="a22\adha.aspx.designer.cs">
+      <DependentUpon>adha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="a22\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="a22\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BingJson.cs" />
+    <Compile Include="BingMe.ashx.cs">
+      <DependentUpon>BingMe.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="cards.aspx.cs">
+      <DependentUpon>cards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cards.aspx.designer.cs">
+      <DependentUpon>cards.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aictec.aspx.cs">
+      <DependentUpon>aictec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aictec.aspx.designer.cs">
+      <DependentUpon>aictec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cards\card.aspx.cs">
+      <DependentUpon>card.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cards\card.aspx.designer.cs">
+      <DependentUpon>card.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cards\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cards\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DB.cs" />
+    <Compile Include="e22\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e22\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="e22\Fitr.aspx.cs">
+      <DependentUpon>Fitr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="e22\Fitr.aspx.designer.cs">
+      <DependentUpon>Fitr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EID\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EID\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EID\EidProcess.aspx.cs">
+      <DependentUpon>EidProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EID\EidProcess.aspx.designer.cs">
+      <DependentUpon>EidProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Email\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Email\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Email\Emailcheck.aspx.cs">
+      <DependentUpon>Emailcheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Email\Emailcheck.aspx.designer.cs">
+      <DependentUpon>Emailcheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Email\EmailProcess.aspx.cs">
+      <DependentUpon>EmailProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Email\EmailProcess.aspx.designer.cs">
+      <DependentUpon>EmailProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Email\list.aspx.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Email\list.aspx.designer.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="logo\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logo\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="png\zk.aspx.cs">
+      <DependentUpon>zk.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="png\zk.aspx.designer.cs">
+      <DependentUpon>zk.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ramadan2021\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ramadan2021\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ramadan2021\ramadanProcess.aspx.cs">
+      <DependentUpon>ramadanProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ramadan2021\ramadanProcess.aspx.designer.cs">
+      <DependentUpon>ramadanProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ramadan2022\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ramadan2022\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ramadan2022\ramadanProcess.aspx.cs">
+      <DependentUpon>ramadanProcess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ramadan2022\ramadanProcess.aspx.designer.cs">
+      <DependentUpon>ramadanProcess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="thumb.aspx.cs">
+      <DependentUpon>thumb.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="thumb.aspx.designer.cs">
+      <DependentUpon>thumb.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Toolss.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59140</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44306/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

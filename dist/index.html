@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>كل يوم وانتم بخير</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="redir.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+  <script type="text/javascript">
+var myURL = window.location.protocol + "//" + window.location.host  +"//e22"
+    alert(myURL)
+    function countdown() {
+        var i = document.getElementById('counter');
+        if (parseInt(i.innerHTML) <= 0) {
+           location.href = myURL;
+        }
+        if (parseInt(i.innerHTML) != 0) {
+            i.innerHTML = parseInt(i.innerHTML) - 1;
+        }
+
+
+
+
+    }
+    setInterval(function () { countdown(); }, 1000);
+</script>
+<!-- partial:index.partial.html -->
+<div class='body'>
+  <span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+  <div class='base'>
+    <span></span>
+    <div class='face'></div>
+  </div>
+</div>
+<div class='longfazers'>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<h1>Redirecting <br>  جاري فتح الموقع <br> كل يوم وانتم بخير <br> <span id="counter">50</span> second(s).</h1>
+<!-- partial -->
+  <script  src="redir.js"></script>
+
+</body>
+</html>
